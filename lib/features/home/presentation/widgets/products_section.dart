@@ -6,6 +6,8 @@ import 'package:store/features/products/presentation/widgets/product_card.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
+import '../../../cart/presentation/bloc/cart_bloc.dart';
+import '../../../cart/presentation/bloc/cart_event.dart';
 import '../../../products/domain/entites/product.dart';
 import '../../../products/presentation/bloc/products/products_bloc.dart';
 import '../../../products/presentation/bloc/products/products_event.dart';
@@ -58,17 +60,26 @@ class ProductsSection extends StatelessWidget {
                               discountPercentage: product.discountPercentage,
                               reviewsCount: product.reviewsCount,
                               stock: product.stock,
-                              onPressed: () {},
+                              onPressed: () {
+                                context.read<CartBloc>().add(
+                                  AddToCartEvent(
+                                    productId: product.id.toString(),
+                                    quantity: 1,
+                                  ),
+                                );
+                                context.push('/cart');
+                              },
                             );
                           },
                           childCount: products.length,
                         ),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 0.55,
-                          crossAxisSpacing: AppSpacing.sm,
-                          mainAxisSpacing: AppSpacing.sm,
-                        )),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.50,
+                        crossAxisSpacing: AppSpacing.sm,
+                        mainAxisSpacing: AppSpacing.sm,
+                      ),
+                    ),
 
                   ]),
                 ),

@@ -101,38 +101,46 @@ class ProductCard extends StatelessWidget {
               Rating(rating: rate, reviewsCount: reviewsCount),
               const SizedBox(height: AppSpacing.sm),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (hasDiscount)
-                        Text(
-                          '\$${price.toStringAsFixed(2)}',
-                          style: AppTextStyles.bodyMedium.copyWith(
-                            decoration: TextDecoration.lineThrough,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (hasDiscount)
+                          Text(
+                            '\$${price.toStringAsFixed(2)}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextStyles.bodyMedium.copyWith(
+                              decoration: TextDecoration.lineThrough,
+                            ),
                           ),
+                        Text(
+                          '\$${discountedPrice.toStringAsFixed(2)}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyles.bodyLarge,
                         ),
-                      Text(
-                        '\$${discountedPrice.toStringAsFixed(2)}',
-                        style: AppTextStyles.bodyLarge,
-                      ),
-                    ],
-                  ),
-                  Container(
-                    height: 40.h,
-                    width: 40.w,
-                    decoration: const BoxDecoration(
-                      color: AppColors.primaryColor,
-                      shape: BoxShape.circle,
+                      ],
                     ),
+                  ),
+                  SizedBox(width: 4.w),
+                  SizedBox(
+                    width: 36.w,
+                    height: 36.h,
                     child: IconButton(
+                      padding: EdgeInsets.zero,
                       onPressed: isOutOfStock ? null : onPressed,
                       icon: Icon(
                         Icons.add_shopping_cart,
                         color: AppColors.secondaryColor,
-                        size: 20.r,
+                        size: 18.r,
+                      ),
+                      style: IconButton.styleFrom(
+                        backgroundColor: AppColors.primaryColor,
+                        shape: const CircleBorder(),
                       ),
                     ),
                   ),
