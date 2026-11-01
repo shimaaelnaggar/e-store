@@ -5,26 +5,26 @@ e-Store is a Flutter-based e-commerce application designed to provide users with
 
 ## ✨Features
 
-### Products
+### 🛒Products
 - Browse available products.
 - Browse products by category.
 - Search for products.
 - View product details.
 - Navigate through products using pagination.
 
-###  Authentication
+### 🔐 Authentication
 - User registration and login.
 - Token-based authentication.
 - Secure token storage using Flutter Secure Storage.
 - Email verification using OTP.
 - Resend OTP functionality.
 
-### Shopping Cart
+### 🧺 Shopping Cart
 - Add products to the shopping cart.
 - Update product quantities.
 - Remove products from the cart.
 
-### Location Selection & Delivery Address
+### 📍 Location Selection & Delivery Address
 - Select a delivery location using an interactive OpenStreetMap.
 - Move and zoom the map to choose the desired location.
 - Confirm the selected location using the Choose Location action.
@@ -34,16 +34,16 @@ e-Store is a Flutter-based e-commerce application designed to provide users with
 
 *Note: The selected map coordinates are displayed in the application, while the delivery address information submitted to the backend is collected through the address form.*
 
-### Checkout & Orders
+## 📦 Checkout & Orders
 - Complete the checkout process.
 - Create and place orders.
 - View order details and receipts.
 
-### Payment
+### 💳 Payment
 - Integrate Paymob payment gateway.
 - Complete the payment flow.
 
-### Notifications
+### 🔔 Notifications
 - View and manage notifications.
 
 ## 🏗️ Architecture
