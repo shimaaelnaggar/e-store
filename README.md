@@ -1,9 +1,9 @@
-# Store – Flutter E-commerce App
+# E-Store – Flutter E-commerce App
 
-## Project Overview
-Store is a Flutter-based e-commerce application designed to provide users with a complete online shopping experience, from browsing products to placing orders and completing payments.
+## 📱 Project Overview
+e-Store is a Flutter-based e-commerce application designed to provide users with a complete online shopping experience, from browsing products to placing orders and completing payments.
 
-## Features
+## ✨Features
 
 ### Products
 - Browse available products.
@@ -12,7 +12,7 @@ Store is a Flutter-based e-commerce application designed to provide users with a
 - View product details.
 - Navigate through products using pagination.
 
-### Shopping Cart & Wishlist
+### Shopping Cart
 - Add products to the shopping cart.
 - Update product quantities.
 - Remove products from the cart.
@@ -39,14 +39,14 @@ Store is a Flutter-based e-commerce application designed to provide users with a
 ### Notifications
 - View and manage notifications.
 
-## Architecture
+## 🏗️ Architecture
 The application follows **Clean Architecture**, separating responsibilities into three main layers:
 
 - **Presentation Layer:** UI components and state management using BLoC.
 - **Domain Layer:** Business logic, entities, repository contracts, and use cases.
 - **Data Layer:** Data models, remote data sources, and repository implementations.
 
-## Tech Stack & Packages
+## 🧰Tech Stack & Packages
 
 - **Flutter & Dart**
 - **State Management:** flutter_bloc
@@ -60,10 +60,10 @@ The application follows **Clean Architecture**, separating responsibilities into
 - **Secure Storage:** Flutter Secure Storage
 - **Map Integration:** Flutter Map, OpenStreetMap, LatLong2
 - **Location Services:** Geolocator
-- **Concurrency:** Bloc Concurrency, RxDart
+- **Debouncing:**  RxDart
 - **Web Content:** WebView Flutter
 
-## Project Structure
+## 📂 Project Structure
 
 ```text
 lib/
@@ -85,7 +85,7 @@ lib/
     └── ...
 ```
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 - Flutter SDK
@@ -117,11 +117,31 @@ flutter pub get
 flutter run
 ```
 
-## Screenshots
+## 📸 Screenshots
 
-Screenshots of the application will be added here to showcase its main screens and features.
+Add screenshots of the application below to showcase its main screens and features.
 
-## Future Improvements
+| Home | Products |
+|:---:|:---:|
+| ![Home](screenshots/home.png) | ![Products](screenshots/products.png) |
+
+| Product Details | Categories |
+|:---:|:---:|
+| ![Product Details](screenshots/product_details.png) | ![Categories](screenshots/categories.png) |
+
+| Cart | Location Selection |
+|:---:|:---:|
+| ![Cart](screenshots/cart.png) | ![Location Selection](screenshots/location.png) |
+
+| Checkout | Payment |
+|:---:|:---:|
+| ![Checkout](screenshots/checkout.png) | ![Payment](screenshots/payment.png) |
+
+| Orders | Notifications |
+|:---:|:---:|
+| ![Orders](screenshots/orders.png) | ![Notifications](screenshots/notifications.png) |
+
+## 🔮Future Improvements
 
 - Develop an Admin Dashboard.
 - Add product management functionality (Create, Update, and Delete products).
