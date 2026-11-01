@@ -31,11 +31,11 @@ class HomeView extends StatelessWidget {
                 providers: [
                   BlocProvider(
                     create: (context) =>
-                    getIt<CategoriesBloc>()..add(GetCategoriesEvent()),
+                        getIt<CategoriesBloc>()..add(GetCategoriesEvent()),
                   ),
                   BlocProvider(
                     create: (context) =>
-                    getIt<ProductsBloc>()..add(GetAllProductsEvent()),
+                        getIt<ProductsBloc>()..add(GetAllProductsEvent()),
                   ),
                 ],
                 child: Padding(

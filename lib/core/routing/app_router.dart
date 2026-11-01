@@ -8,6 +8,9 @@ import 'package:store/features/orders/presentation/views/paymob_checkout_view.da
 import 'package:store/features/profile/presentation/bloc/profile_bloc.dart';
 
 import '../../features/adresses/presentation/views/address_details_view.dart';
+import '../../features/notifications/presentation/bloc/notification_bloc.dart';
+import '../../features/notifications/presentation/bloc/notification_event.dart';
+import '../../features/notifications/presentation/views/notifications_view.dart';
 import '../../features/orders/domain/entites/order.dart';
 import '../../features/orders/presentation/bloc/order_bloc.dart';
 import '../../features/orders/presentation/bloc/order_event.dart';
@@ -162,6 +165,14 @@ class AppRouter {
         builder: (context, state) => BlocProvider(
           create: (_) => getIt<OrderBloc>()..add(GetOrdersEvent()),
           child: const MyOrdersView(),
+        ),
+      ),
+      GoRoute(
+        path: '/notifications',
+        builder: (context, state) => BlocProvider.value(
+          value: context.read<NotificationBloc>()
+            ..add(GetNotificationsEvent()),
+          child: const NotificationsView(),
         ),
       ),
     ],

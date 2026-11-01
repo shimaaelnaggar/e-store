@@ -46,6 +46,13 @@ import '../../features/cart/presentation/bloc/cart_bloc.dart';
 import '../../features/categories/data/data_sources/categories_remote_data_source.dart';
 import '../../features/categories/data/repos/categories_repository_impl.dart';
 import '../../features/categories/presentation/bloc/categories_bloc.dart';
+import '../../features/notifications/data/data_sources/notification_remote_datasource.dart';
+import '../../features/notifications/data/repos/notification_repository_impl.dart';
+import '../../features/notifications/domain/repos/notification_repository_contract.dart';
+import '../../features/notifications/domain/usecases/get_notifications_usecase.dart';
+import '../../features/notifications/domain/usecases/mark_all_notifications_as_read_usecase.dart';
+import '../../features/notifications/domain/usecases/mark_notification_as_read_usecase.dart';
+import '../../features/notifications/presentation/bloc/notification_bloc.dart';
 import '../../features/orders/data/data_sources/order_remote_datasource.dart';
 import '../../features/orders/data/repos/order_repository_impl.dart';
 import '../../features/orders/domain/repos/order_repository_contract.dart';
@@ -372,6 +379,45 @@ void setupAppServiceLocator() {
   getIt.registerFactory<ProfileBloc>(
     () => ProfileBloc(
       getProfileUseCase: getIt<GetProfileUseCase>(),
+    ),
+  );
+
+  //notifications
+  getIt.registerLazySingleton<BaseNotificationRemoteDataSource>(
+    () => NotificationRemoteDataSource(
+      dio: getIt<Dio>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<NotificationRepositoryContract>(
+    () => NotificationRepositoryImpl(
+      dataSource: getIt<BaseNotificationRemoteDataSource>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<GetNotificationsUseCase>(
+    () => GetNotificationsUseCase(
+      repository: getIt<NotificationRepositoryContract>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<MarkNotificationAsReadUseCase>(
+    () => MarkNotificationAsReadUseCase(
+      repository: getIt<NotificationRepositoryContract>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<MarkAllNotificationAsReadUseCase>(
+    () => MarkAllNotificationAsReadUseCase(
+      repository: getIt<NotificationRepositoryContract>(),
+    ),
+  );
+
+  getIt.registerFactory<NotificationBloc>(
+    () => NotificationBloc(
+      getNotificationsUseCase: getIt<GetNotificationsUseCase>(),
+      markNotificationAsReadUseCase: getIt<MarkNotificationAsReadUseCase>(),
+      markNotificationsAsReadUseCase: getIt<MarkAllNotificationAsReadUseCase>(),
     ),
   );
 

@@ -7,6 +7,10 @@ import 'package:store/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:store/features/cart/presentation/bloc/cart_state.dart';
 import 'package:store/features/products/presentation/widgets/circle_button.dart';
 
+import '../../../notifications/presentation/bloc/notification_bloc.dart';
+import '../../../notifications/presentation/bloc/notification_event.dart';
+import '../../../notifications/presentation/bloc/notification_state.dart';
+
 class HomeTopBar extends StatelessWidget {
   const HomeTopBar({Key? key}) : super(key: key);
 
@@ -38,9 +42,61 @@ class HomeTopBar extends StatelessWidget {
           SizedBox(width: 8.w),
 
 // Notifications
-          CircleButton(
-            icon: Icons.notifications_none_rounded,
-            onPressed: () => context.push('/notifications'),
+          BlocBuilder<NotificationBloc, NotificationState>(
+            builder: (context, state) {
+              final unreadCount = state is NotificationsSuccessState
+                  ? state.notificationsPage.notifications
+                      .where((notification) => !notification.isRead)
+                      .length
+                  : 0;
+
+              return Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  CircleButton(
+                    icon: Icons.notifications_none_rounded,
+                    onPressed: () async {
+                      await context.push('/notifications');
+
+                      if (context.mounted) {
+                        context.read<NotificationBloc>().add(
+                              GetNotificationsEvent(
+                                includeRead: false,
+                                page: 1,
+                                pageSize: 100,
+                              ),
+                            );
+                      }
+                    },
+                  ),
+                  if (unreadCount > 0)
+                    Positioned(
+                      right: -5,
+                      top: -5,
+                      child: Container(
+                        padding: EdgeInsets.all(4.r),
+                        constraints: BoxConstraints(
+                          minWidth: 18.r,
+                          minHeight: 18.r,
+                        ),
+                        decoration: const BoxDecoration(
+                          color: AppColors.primaryColor,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Text(
+                          unreadCount > 99 ? '99+' : '$unreadCount',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              );
+            },
           ),
 
           SizedBox(width: 8.w),

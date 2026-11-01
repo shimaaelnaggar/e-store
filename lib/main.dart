@@ -6,14 +6,31 @@ import 'package:store/core/routing/app_router.dart';
 import 'package:store/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:store/features/cart/presentation/bloc/cart_event.dart';
 
+import 'features/notifications/presentation/bloc/notification_bloc.dart';
+import 'features/notifications/presentation/bloc/notification_event.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   setupAppServiceLocator();
 
   runApp(
-    BlocProvider(
-      create: (_) => getIt<CartBloc>()..add(GetCartEvent()),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => getIt<CartBloc>()..add(GetCartEvent()),
+        ),
+        BlocProvider(
+          create: (_) => getIt<NotificationBloc>()
+            ..add(
+                GetNotificationsEvent(
+                  includeRead: false,
+                  page: 1,
+                  pageSize: 100,
+                )
+            ),
+        ),
+      ],
       child: const StoreApp(),
     ),
   );

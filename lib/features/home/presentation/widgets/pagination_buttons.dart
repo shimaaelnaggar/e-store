@@ -10,6 +10,7 @@ class PaginationButtons extends StatelessWidget {
   final int pageSize;
   final bool hasNextPage;
   final bool hasPreviousPage;
+  final String itemLabel;
   final void Function(int page) onPageChanged;
   const PaginationButtons({
     Key? key,
@@ -19,6 +20,7 @@ class PaginationButtons extends StatelessWidget {
     required this.onPageChanged,
     required this.totalCount,
     required this.pageSize,
+    this.itemLabel = 'products',
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -95,7 +97,7 @@ class PaginationButtons extends StatelessWidget {
             height: AppSpacing.sm,
           ),
           Text(
-            'Showing $startItem-$endItem of $totalCount products',
+            'Showing $startItem-$endItem of $totalCount $itemLabel',
             style: AppTextStyles.bodyMedium,
           ),
         ],
