@@ -19,7 +19,7 @@ e-Store is a Flutter-based e-commerce application designed to provide users with
 - Email verification using OTP.
 - Resend OTP functionality.
 
-### 🧺 Shopping Cart
+### 🛒 Shopping Cart
 - Add products to the shopping cart.
 - Update product quantities.
 - Remove products from the cart.
@@ -128,25 +128,25 @@ flutter run
 
 Add screenshots of the application below to showcase its main screens and features.
 
-| Home | Products |
+| Home | Notifications |
 |:---:|:---:|
-| ![Home](screenshots/home.png) | ![Products](screenshots/products.png) |
+| ![Home](screenshots/home.jpeg) | ![notifications](screenshots/notifications.jpeg) |
 
-| Product Details | Categories |
+| Product Details | profile |
 |:---:|:---:|
-| ![Product Details](screenshots/product_details.png) | ![Categories](screenshots/categories.png) |
+| ![Product Details](screenshots/product_details.jpeg) | ![profile](screenshots/profile.jpeg) |
 
 | Cart | Location Selection |
 |:---:|:---:|
-| ![Cart](screenshots/cart.png) | ![Location Selection](screenshots/location.png) |
+| ![Cart](screenshots/cart.jpeg) | ![Location Selection](screenshots/location.jpeg) |
 
 | Checkout | Payment |
 |:---:|:---:|
-| ![Checkout](screenshots/checkout.png) | ![Payment](screenshots/payment.png) |
+| ![Checkout](screenshots/checkout.jpeg) | ![Payment](screenshots/payment.jpeg) |
 
 | Orders | Notifications |
 |:---:|:---:|
-| ![Orders](screenshots/orders.png) | ![Notifications](screenshots/notifications.png) |
+| ![Orders](screenshots/orders.jpeg) | ![Receipt](screenshots/receipt.jpeg) |
 
 ## 🔮Future Improvements
 
