@@ -12,6 +12,13 @@ e-Store is a Flutter-based e-commerce application designed to provide users with
 - View product details.
 - Navigate through products using pagination.
 
+###  Authentication
+- User registration and login.
+- Token-based authentication.
+- Secure token storage using Flutter Secure Storage.
+- Email verification using OTP.
+- Resend OTP functionality.
+
 ### Shopping Cart
 - Add products to the shopping cart.
 - Update product quantities.
